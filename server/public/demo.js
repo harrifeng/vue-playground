@@ -6,7 +6,18 @@ var app = new Vue({
   },
   methods: {
     getFormValues () {
-      this.output = this.$refs.my_input.value
+      body = {}
+      this.$http.post('member_info', body).then(response => {
+        let body = response.body;
+        console.log(body.code)
+        if (body.code != 0 ) {
+          this.output = "Member Not existed"
+        } else {
+          this.output = body.Data
+        }
+      }, response => {
+        this.output = 'error return'
+      });
     }
   }
 })

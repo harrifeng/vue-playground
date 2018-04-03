@@ -30,7 +30,6 @@ func MemberRelationHandler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "POST":
-		w.WriteHeader(200)
 
 		decoder := json.NewDecoder(r.Body)
 		defer r.Body.Close()
@@ -38,10 +37,12 @@ func MemberRelationHandler(w http.ResponseWriter, r *http.Request) {
 		err := decoder.Decode(&t)
 		if err != nil {
 			w.WriteHeader(400)
+			output.Code = 1
 			output.Message = "Incorrect json format"
 			json.NewEncoder(w).Encode(output)
 			break
 		}
+		w.WriteHeader(200)
 		for _, one := range t {
 			result := Member{one.MemberID, "telephone"}
 			output.Data = append(output.Data, result)
