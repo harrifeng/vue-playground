@@ -6,14 +6,13 @@ var app = new Vue({
   },
   methods: {
     getFormValues () {
-      body = [
-        {
-          'member_id': parseInt(this.$refs.my_input.value)
-        },
-        {
-          'member_id': parseInt(this.$refs.my_input.value)
-        }
-      ]
+      ids = this.$refs.my_input.value.split(',')
+      body = []
+
+      for (let i = 0; i < ids.length; i++) {
+        body.push({"member_id": parseInt(ids[i])})
+      }
+
       this.$http.post('member_info', body).then(response => {
         let ret = response.body;
         console.log(ret.code)
