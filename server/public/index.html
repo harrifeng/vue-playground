@@ -5,15 +5,47 @@
     <title>Vue</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
   </head>
   <body>
-    <h1>Hello</h1>
-    <div id="app">
-      <form>
-        <input type="text" ref="my_input">
-        <button @click.prevent="getFormValues()">Get Value</button>
+    <div class="container">
+      <h3 class="h3">用户查询</h3>
+    </div>
+
+    <div id="app" class="container">
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="staticEmail2" class="sr-only">Email</label>
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="请输入用户ID">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">member_id</label>
+          <input type="text" class="form-control" id="inputPassword2" placeholder="member id" ref="my_input">
+        </div>
+        <button @click.prevent="getFormValues()" class="btn btn-primary mb-2">查询</button>
       </form>
-      Output: {{ output }}
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">MemberID</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Friends</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>{{output.member_id}}</td>
+            <td>{{output.telephone}}</td>
+            <td>{{output.friends}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 
