@@ -15,7 +15,7 @@ var app = new Vue({
         if (ret.code != 0 ) {
           this.output = "Member Not existed"
         } else {
-          this.output = ret.Data
+          this.output = ret.Data[0]
         }
       }, response => {
         this.output = 'error return'
