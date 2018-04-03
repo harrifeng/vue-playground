@@ -8,7 +8,11 @@
   <body>
     <h1>Hello</h1>
     <div id="app">
-      {{ message }}
+      <form>
+        <input type="text" ref="my_input">
+        <button @click.prevent="getFormValues()">Get Value</button>
+      </form>
+      Output: {{ output }}
     </div>
   </body>
 
