@@ -44,8 +44,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"></th>
+          <tr v-for="(output, index) in outputs">
+            <th scope="row">{{index+1}}</th>
             <td>{{output.member_id}}</td>
             <td>{{output.telephone}}</td>
             <td>{{output.friends}}</td>
