@@ -25,30 +25,44 @@
 
       <form>
         <div class="form-group">
-          <label for="my_input">输入用户ID,多个ID以逗号分隔,长度不超过100</label>
-          <input type="text" class="form-control"
+          <label for="my_input">输入用户ID</label>
+          <input type="text"
+                 maxlength="10"
+                 pattern="\d*"
+                 class="form-control"
                  id="my_input"
                  placeholder="member id"
-                 maxlength="100"
                  ref="my_input">
         </div>
-        <button @click.prevent="getFormValues()" class="btn btn-primary mb-2 float-right">查询</button>
+        <button @click.prevent="getFormValues()"
+                class="btn btn-primary mb-2 float-right">查询</button>
       </form>
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
             <th scope="col">用户ID</th>
             <th scope="col">手机号码</th>
-            <th scope="col">朋友</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(output, index) in outputs">
+          <tr>
+            <td>{{ output.member_id }}</td>
+            <td>{{ output.telephone }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">朋友ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(friend, index) in output.friends">
             <th scope="row">{{index+1}}</th>
-            <td>{{output.member_id}}</td>
-            <td>{{output.telephone}}</td>
-            <td>{{output.friends}}</td>
+            <td>{{friend}}</td>
           </tr>
         </tbody>
       </table>
