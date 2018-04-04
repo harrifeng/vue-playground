@@ -17,15 +17,15 @@ var app = new Vue({
           this.output.id = -1
           this.output.mobile = ""
           this.output.friends = []
+          alert("Hello! I am an alert box!");
         } else {
           this.output = {}
           this.output.member_id = ret.Data[0].member_id
           this.output.telephone = ret.Data[0].telephone
           this.output.friends = [12, 34, 56]
-          console.log("output is")
-          console.log(this.output)
         }
       }, response => {
+        alert("Hello! I am an alert box!");
       });
     }
   }
